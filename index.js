@@ -49,7 +49,7 @@ function processFirstItem(stringList, callback) {
  * should return "There are 0".
 */
 function processLength(sampleList, callback) {
-  /* CODE HERE */
+  return callback(sampleList.length);
 }
 
 /**
