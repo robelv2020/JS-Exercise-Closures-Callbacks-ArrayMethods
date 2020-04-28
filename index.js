@@ -285,14 +285,14 @@ function getFullNames(runners){
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-// function firstNamesAllCaps(runners) {
-//   let convertedFname = runners.map(function(name){
-//     return name.first_name.toUpperCase();
-//   })
-//   return convertedFname;
-// }
-
 function firstNamesAllCaps(runners){
+  // function firstNamesAllCaps(runners) {
+  //   let convertedFname = runners.map(function(name){
+  //     return name.first_name.toUpperCase();
+  //   })
+  //   return convertedFname;
+  // }
+
   // const agent;
   // let convertedFname = runners.map(function(fname,lName){
   //   this.fname = fname;
@@ -327,10 +327,13 @@ function firstNamesAllCaps(runners){
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners,tShirtSize) {
+  let sizeNeeded = runners.filter(function(checkShirt){
+    return checkShirt.shirt_size === tShirtSize;
+  })
+  return sizeNeeded;
 }
-
+// console.log(getRunnersByTShirtSize(runners, '2XL'));
 /**
  * ### Challenge `tallyUpDonations`
  *  * THIS IS A STRETCH PROBLEM! ATTEMPT ONLY AFTER COMPLETING ALL NON-STRETCH CHALLENGES!
@@ -342,8 +345,12 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  let totoalDonated = runners.reduce(function(newTotal, donatedAmount){
+    //return newTotal += donatedAmount.donation;
+    return newTotal = newTotal+donatedAmount.donation;
+  },0);
+  return totoalDonated;
 }
 
 /////////////// CLOSURES ///////////////
@@ -401,10 +408,29 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(maxValue) {
+  let reset,myLimit = 0;
+  // return function(){
+  //   if(myLimit >maxValue){
+  //     myLimit = reset;
+  //   }else if(myLimit == maxValue){
+  //     return myLimit = 0;
+  //   }
+  //   return myLimit++;    
+  // }
+  return function(){
+    if(myLimit > maxValue){
+      myLimit = reset;
+    }
+    return myLimit++;
+  }
 }
-
+const countCounter = counterMakerWithLimit(3);
+console.log(countCounter()); // should return 0
+console.log(countCounter()); // should return 1
+console.log(countCounter()); // should return 2
+console.log(countCounter()); // should return 3
+console.log(countCounter());
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
