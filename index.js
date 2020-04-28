@@ -66,8 +66,8 @@ function processLength(sampleList, callback) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, callback) {
+ return callback(stringList[stringList.length-1])
 }
 
 /**
@@ -88,8 +88,8 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `-5`, '-1', and `(num) => num + 1000`,
  * should return 994.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(num1 , num2 , callback) {
+  return callback(num1+num2)
 }
 
 /**
@@ -110,8 +110,8 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1 ,num2 ,callback) {
+ return callback(num1 * num2)
 }
 
 /**
@@ -132,8 +132,11 @@ function processProduct(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list,callback) {
+
+  // making sure only the unique values get Set
+  return callback([...new Set(list)])
+  // return callback((list) => list.filter((v,i) => list.indexOf(v) === i )
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -155,8 +158,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * 
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function lowerCaseStrings(/* code here */) {
-  /* code here */
+function lowerCaseStrings(strings) {
+  let newArrFruitList = [];
+  let tempStorage = strings.forEach(function(str){
+    newArrFruitList.push(str.toLowerCase())
+  })
+  return newArrFruitList;
 }
 
 /**
@@ -174,9 +181,20 @@ function lowerCaseStrings(/* code here */) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(strings) {
+  let newArr = [];
+  //let firstVal = true;
+  //let secondVal = false;
+  for(let i = 0; i<=strings.length-1; i++){
+    if(strings[i] === "apple"){
+      newArr.push(true);
+    }else{
+      newArr.push(false);
+    }
+  };
+  return newArr;
 }
+
 
 /**
  * ### Challenge `removeApple`
@@ -194,8 +212,13 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
-  /* code here */
+function removeApple(strings) {
+
+  let arrWithoutApple = strings.filter(
+    function(newArrFruitList){
+      return newArrFruitList != 'apple'
+    })
+return arrWithoutApple;
 }
 
 /**
@@ -213,8 +236,11 @@ function removeApple(/* code here */) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
-  /* code here */
+function stringSmash(strings) {
+  let mergedString = strings.reduce(function(newText, previousText){
+    return newText + previousText;
+  })
+  return mergedString;
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -231,9 +257,20 @@ function stringSmash(/* code here */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
-*/
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+// */
+// function getFullNames(runners) {
+//   // let fullNames = [];
+//   // fullNames = runners.map(function(val1,val2){
+//   //   return `${val1.last_name}, ${val2.first_name}`;
+//   // })
+//   // return fullNames;
+// } 
+
+function getFullNames(runners){
+  let fullNames = runners.map(function(id) {
+    return `${id.last_name}, ${id.first_name}`;
+  })
+  return fullNames;
 }
 
 /**
@@ -248,8 +285,32 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+// function firstNamesAllCaps(runners) {
+//   let convertedFname = runners.map(function(name){
+//     return name.first_name.toUpperCase();
+//   })
+//   return convertedFname;
+// }
+
+function firstNamesAllCaps(runners){
+  // const agent;
+  // let convertedFname = runners.map(function(fname,lName){
+  //   this.fname = fname;
+  //   this.lName = lName;
+  //   const self = this;
+
+  //   this.getFullNames=function(){
+  //     this === agent;
+  //     return `${self.firstName} ${self.lastName}`;
+  //   }
+
+  //   return name.first_name.toUpperCase();
+  // })
+  // return convertedFname;
+  let convertedFname = runners.map(function(val){
+    return val.first_name.toUpperCase();
+  })
+  return convertedFname;
 }
 
 /**
