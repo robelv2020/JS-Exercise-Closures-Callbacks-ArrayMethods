@@ -238,6 +238,7 @@ return arrWithoutApple;
 */
 function stringSmash(strings) {
   let mergedString = strings.reduce(function(newText, previousText){
+  // let mergedString = strings.reduce((newText, previousText)=>{
     return newText + previousText;
   })
   return mergedString;
@@ -269,7 +270,7 @@ function stringSmash(strings) {
 function getFullNames(runners){
   let fullNames = runners.map(function(id) {
     return `${id.last_name}, ${id.first_name}`;
-  })
+  });
   return fullNames;
 }
 
@@ -347,9 +348,9 @@ function getRunnersByTShirtSize(runners,tShirtSize) {
 */
 function tallyUpDonations(runners) {
   let totoalDonated = runners.reduce(function(newTotal, donatedAmount){
-    //return newTotal += donatedAmount.donation;
-    return newTotal = newTotal+donatedAmount.donation;
-  },0);
+    return newTotal += donatedAmount.donation;
+    //return newTotal = newTotal+donatedAmount.donation;
+  },0)
   return totoalDonated;
 }
 
@@ -425,12 +426,12 @@ function counterMakerWithLimit(maxValue) {
     return myLimit++;
   }
 }
-const countCounter = counterMakerWithLimit(3);
-console.log(countCounter()); // should return 0
-console.log(countCounter()); // should return 1
-console.log(countCounter()); // should return 2
-console.log(countCounter()); // should return 3
-console.log(countCounter());
+// const countCounter = counterMakerWithLimit(3);
+// console.log(countCounter()); // should return 0
+// console.log(countCounter()); // should return 1
+// console.log(countCounter()); // should return 2
+// console.log(countCounter()); // should return 3
+// console.log(countCounter());
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
